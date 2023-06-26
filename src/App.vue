@@ -1,11 +1,13 @@
 <script>
 import axios from 'axios';
 import { store } from './store.js';
-import AppFilmMain from './components/AppFilmMain.vue';
+import AppHeaderSearch from './components/AppHeaderSearch.vue';
+import AppMain from './components/AppMain.vue'
 
 export default {
   components: {
-    AppFilmMain,
+    AppHeaderSearch,
+    AppMain,
   },
   data() {
     return {
@@ -13,19 +15,29 @@ export default {
     }
   },
   mounted() {
-    axios.get(store.apiUrl).then((response) => {
-      store.filmsObj = response.data.results;
-      console.log(store.filmsObj);
-    })
+    this.getFilm()
   },
   methods: {
+    getFilm() {
 
+      if (store.searchFilm !== '') {
+        store.apiUrl += `&query=${store.searchFilm}`
+      }
+
+      axios.get(store.apiUrl).then((response) => {
+        store.filmsObj = response.data.results;
+        //store.loading = false
+        console.log(store.filmsObj);
+      })
+
+    }
   }
 }
 </script>
 
 <template>
-  <AppFilmMain />
+  <AppHeaderSearch @filmSearch="getFilm" />
+  <AppMain />
 </template>
 
 <style lang="scss">
