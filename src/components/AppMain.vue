@@ -19,7 +19,7 @@ export default {
                 <div class="col">
                     <div class="film">
                         <ul>
-                            <li class="m-4" v-for="(film, index) in store.filmsObj" :key="index">
+                            <li class="" v-for="(film, index) in store.filmsObj" :key="index">
                                 <div class="film d-flex">
                                     <div class="me-3">{{ film.original_title }}</div>
                                     <div class="me-3">{{ film.original_title }}</div>
@@ -34,7 +34,7 @@ export default {
 
                     <div class="tv">
                         <ul>
-                            <li v-for="(tv, index) in store.filmsObj" :key="index">
+                            <li v-for="(tv, index) in store.tvsObj" :key="index">
                                 <div class="tv d-flex">
                                     <div class="me-3">{{ tv.name }}</div>
                                     <div class="me-3">{{ tv.original_name }}</div>
@@ -63,6 +63,6 @@ img {
 }
 
 .film {
-    background-color: blue;
+    background-color: yellow;
 }
 </style>

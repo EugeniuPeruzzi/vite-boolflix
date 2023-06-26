@@ -21,10 +21,17 @@ export default {
     getFilm() {
 
       if (store.searchFilm !== '') {
-        store.apiUrl += `&query=${store.searchFilm}`
+        store.filmUrl += `&query=${store.searchFilm}`
+        store.tvUrl += `&query=${store.searchFilm}`
       }
 
-      axios.get(store.apiUrl).then((response) => {
+      axios.get(store.tvUrl).then((response) => {
+        store.tvsObj = response.data.results;
+        //store.loading = false
+        console.log(store.tvsObj);
+      })
+
+      axios.get(store.filmUrl).then((response) => {
         store.filmsObj = response.data.results;
         //store.loading = false
         console.log(store.filmsObj);
