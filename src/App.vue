@@ -4,7 +4,6 @@ import { store } from './store.js';
 import AppFilmMain from './components/AppFilmMain.vue';
 
 export default {
-  // dico di utilizzare le componenti chiamate
   components: {
     AppFilmMain,
   },
@@ -14,7 +13,10 @@ export default {
     }
   },
   mounted() {
-
+    axios.get(store.apiUrl).then((response) => {
+      store.filmsObj = response.data.results;
+      console.log(store.filmsObj);
+    })
   },
   methods: {
 
