@@ -21,14 +21,13 @@ export default {
     <div>
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col-auto d-flex flex-wrap align-items-center">
                     <div class="" v-for="(film, index) in store.filmsObj" :key="index">
                         <AppCardFilm :myCardFilm="film" />
                     </div>
                     <div class="" v-for="(tv, index) in store.tvsObj" :key="index">
                         <AppCardTv :myCardTv="tv" />
                     </div>
-
                 </div>
             </div>
         </div>

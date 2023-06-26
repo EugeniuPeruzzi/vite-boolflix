@@ -10,7 +10,6 @@ export default {
         starVotes() {
             let roundedVote = this.myCardTv.vote_average;
             let vote = Math.round(roundedVote / 2);
-            console.log(vote);
             return vote
         }
     },
@@ -19,25 +18,28 @@ export default {
 
 <template >
     <div>
-        <div class="tv">
-            <ul>
-                <li>
-                    <div class="tv d-flex">
-                        <img :src="`https://image.tmdb.org/t/p/w342/${myCardTv.poster_path}`" alt="">
-                        <div class="me-3">{{ myCardTv.name }}</div>
-                        <div class="me-3">{{ myCardTv.original_name }}</div>
-                        <img class="cntr-flag"
+        <div class="card m-2">
+            <div class="position-relative">
+                <div class="card-container bckg-black">
+                    <div class="img-container">
+                        <img :src="`https://image.tmdb.org/t/p/w342/${myCardTv.poster_path}`">
+                    </div>
+                    <div class="overlay d-flex flex-column align-items-center text-center">
+                        <h4 class="mt-1">{{ myCardTv.name }}</h4>
+                        <span class="d-block">{{ myCardTv.original_name }}</span>
+                        <img class="cntr-flag mt-2"
                             :src="`../../node_modules/country-flag-icons/1x1/${myCardTv.original_language.toUpperCase()}.svg`"
                             :alt="myCardTv.original_language.toUpperCase()">
-                        <div class="me-3" v-for="vote in starVotes()"><i class="fa-star fa-solid vote-color"></i></div>
+                        <div class="star-container d-flex mt-3">
+                            <div class="" v-for="vote in starVotes()"><i class="fa-star fa-solid vote-color"></i></div>
+                        </div>
+                        <div class="overview-container overflow-auto mt-4">
+                            <p>{{ myCardTv.overview }}</p>
+                        </div>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
     </div>
 </template>
-<style lang="scss" scoped>
-.tv {
-    background-color: darkcyan;
-}
-</style>
+<style lang="scss" scoped></style>

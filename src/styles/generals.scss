@@ -16,14 +16,47 @@ ul li {
 }
 
 img {
-    width: 20%;
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
 }
 
+
 .cntr-flag {
-    width: 20px;
-    height: 15px;
+    width: 25px;
+    height: 20px;
 }
 
 .vote-color {
     color: gold;
+}
+
+.bckg-black {
+    width: 342px;
+    height: 100%;
+    aspect-ratio: 3/4;
+    background-color: black;
+}
+
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #000000;
+    color: #fff;
+}
+
+.card:hover .overlay {
+    opacity: 0.9;
+}
+
+.overview-container {
+    height: 200px;
+    width: 300px;
+
 }
