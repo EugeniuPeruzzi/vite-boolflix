@@ -11,6 +11,10 @@ export default {
             let roundedVote = this.myCardTv.vote_average;
             let vote = Math.round(roundedVote / 2);
             return vote
+        },
+        starNoVotes() {
+            let noStar = 5 - this.starVotes()
+            return noStar
         }
     },
 }
@@ -32,6 +36,7 @@ export default {
                             :alt="myCardTv.original_language.toUpperCase()">
                         <div class="star-container d-flex mt-3">
                             <div class="" v-for="vote in starVotes()"><i class="fa-star fa-solid vote-color"></i></div>
+                            <div class="" v-for="vote in starNoVotes()"><i class="fa-star fa-solid"></i></div>
                         </div>
                         <div class="overview-container overflow-auto mt-4">
                             <p>{{ myCardTv.overview }}</p>

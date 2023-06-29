@@ -30,7 +30,7 @@ export default {
                         <img :src="`https://image.tmdb.org/t/p/w342/${myCardFilm.poster_path}`">
                     </div>
                     <div class="overlay d-flex flex-column align-items-center text-center">
-                        <h4 class="mt-1">{{ myCardFilm.original_title }}</h4>
+                        <h4 class="mt-1">{{ myCardFilm.title }}</h4>
                         <span class="d-block">{{ myCardFilm.original_title }}</span>
                         <img class="cntr-flag mt-2"
                             :src="`../../node_modules/country-flag-icons/1x1/${myCardFilm.original_language.toUpperCase()}.svg`"
