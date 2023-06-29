@@ -13,11 +13,14 @@ export default {
 <template >
     <div>
         <div class="container">
-            <div class="row d-flex align-items-center justify-content-evenly p-2 my-3">
-                <div class="col-4">
-                    <h1><strong>Boolflix</strong></h1>
+            <div
+                class="row d-flex align-items-center justify-content-evenly py-3  position-fixed z-3 top-0 start-0 end-0 z-bckgrnd">
+                <div class="col-2">
+                    <a href="/">
+                        <h1><strong>Boolflix</strong></h1>
+                    </a>
                 </div>
-                <div class="col-5">
+                <div class="col-3">
                     <div class="d-flex">
                         <input class="form-control" type="text" list="datalistOptions" id="exampleDataList"
                             placeholder="Cerca il tuo film" v-model="store.searchFilm" @keyup.enter="$emit('filmSearch')">
@@ -37,5 +40,9 @@ strong {
 
 h1 {
     text-shadow: 2px 2px black;
+}
+
+.z-bckgrnd {
+    background-color: #212529;
 }
 </style>

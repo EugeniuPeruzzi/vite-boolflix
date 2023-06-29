@@ -15,29 +15,49 @@ export default {
     }
   },
   mounted() {
-    this.getFilm()
+    axios.get(store.trendingUrl).then((res) => {
+      store.trendingsObj = res.data.results;
+      //store.loading = false
+      console.log(store.trendingsObj);
+    });
   },
   methods: {
+
+    trendingFilm() {
+      if (store.searchFilm === '') {
+
+      }
+    },
+
+
     getFilm() {
 
       if (store.searchFilm !== '') {
-        store.filmUrl += `&query=${store.searchFilm}`
-        store.tvUrl += `&query=${store.searchFilm}`
+        store.filmUrl += `&query=${store.searchFilm}`;
+        axios.get(store.filmUrl).then((response) => {
+          store.filmsObj = response.data.results;
+          //store.loading = false
+          console.log(store.filmsObj);
+        });
+
+        store.tvUrl += `&query=${store.searchFilm}`;
+        axios.get(store.tvUrl).then((response) => {
+          store.tvsObj = response.data.results;
+          //store.loading = false
+          console.log(store.tvsObj);
+        });
+        store.trendingsObj = 0
       }
-
-      axios.get(store.tvUrl).then((response) => {
-        store.tvsObj = response.data.results;
-        //store.loading = false
-        console.log(store.tvsObj);
-      })
-
-      axios.get(store.filmUrl).then((response) => {
-        store.filmsObj = response.data.results;
-        //store.loading = false
-        console.log(store.filmsObj);
-      })
-
-    }
+      else {
+        store.tvsObj = 0
+        store.filmsObj = 0
+        axios.get(store.trendingUrl).then((res) => {
+          store.trendingsObj = res.data.results;
+          //store.loading = false
+          console.log(store.trendingsObj);
+        });
+      }
+    },
   }
 }
 </script>
