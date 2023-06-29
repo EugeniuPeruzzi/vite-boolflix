@@ -23,14 +23,27 @@ export default {
         starNoVotes() {
             let noStar = 5 - this.starVotes()
             return noStar
-        }
+        },
+        actorsApi() {
+            store.idMovie = this.myCardFilm.id
+
+            store.fullCastUrl = `${store.firstPartCastUrl}${store.idMovie}${store.lastPartCastUrl}`
+
+            axios.get(store.fullCastUrl).then((res) => {
+                store.castObj = res.data.cast
+                console.log('adfufnbeufgnbufngu');
+            });
+
+            //continua a darmi axios is undefined credo sia dovuto alla parte che non riesco a recuparare l'id, 
+            // vedro di sistemarlo 
+        },
     },
 }
 </script>
 
 <template >
     <div>
-        <div class="card m-2">
+        <div class="card m-2" @click="actorsApi()">
             <div class="position-relative">
                 <div class="card-container bckg-black">
                     <div class="" v-if="(myCardFilm.poster_path == null)">
@@ -57,6 +70,7 @@ export default {
                         <div class="overview-container overflow-auto mt-4">
                             <p>{{ myCardFilm.overview }}</p>
                         </div>
+                        <button @click="actorsApi()">More...</button>
                     </div>
                 </div>
             </div>

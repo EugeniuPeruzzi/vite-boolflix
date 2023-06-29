@@ -9,26 +9,21 @@ export default {
     AppHeaderSearch,
     AppMain,
   },
+
   data() {
     return {
       store,
     }
   },
+
   mounted() {
     axios.get(store.trendingUrl).then((res) => {
       store.trendingsObj = res.data.results;
-      //store.loading = false
       console.log(store.trendingsObj);
     });
   },
+
   methods: {
-
-    trendingFilm() {
-      if (store.searchFilm === '') {
-
-      }
-    },
-
 
     getFilm() {
 
@@ -36,14 +31,14 @@ export default {
         store.filmUrl += `&query=${store.searchFilm}`;
         axios.get(store.filmUrl).then((response) => {
           store.filmsObj = response.data.results;
-          //store.loading = false
+
           console.log(store.filmsObj);
         });
 
         store.tvUrl += `&query=${store.searchFilm}`;
         axios.get(store.tvUrl).then((response) => {
           store.tvsObj = response.data.results;
-          //store.loading = false
+
           console.log(store.tvsObj);
         });
         store.trendingsObj = 0
@@ -53,7 +48,7 @@ export default {
         store.filmsObj = 0
         axios.get(store.trendingUrl).then((res) => {
           store.trendingsObj = res.data.results;
-          //store.loading = false
+
           console.log(store.trendingsObj);
         });
       }
