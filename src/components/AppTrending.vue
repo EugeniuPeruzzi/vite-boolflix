@@ -24,15 +24,15 @@ export default {
     <div>
         <div class="card m-2">
             <div class="position-relative">
-                <span
-                    class="badge text-bg-primary position-absolute centerd-lable rounded-pill">{{ myTrending.media_type }}</span>
+                <span class="badge text-bg-primary position-absolute centerd-lable rounded-pill">{{ myTrending.media_type
+                }}</span>
                 <div class="card-container bckg-black">
                     <div class="img-container">
                         <img :src="`https://image.tmdb.org/t/p/w342/${myTrending.poster_path}`">
                     </div>
                     <div class="overlay d-flex flex-column align-items-center text-center">
-                        <h4 class="mt-1">{{ myTrending.name }}</h4>
-                        <span class="d-block">{{ myTrending.original_name }}</span>
+                        <h4 class="mt-1">{{ myTrending.name || myTrending.title }}</h4>
+                        <span class="d-block">{{ myTrending.original_name || myTrending.original_title }}</span>
                         <img class="cntr-flag mt-2"
                             :src="`../../node_modules/country-flag-icons/1x1/${myTrending.original_language.toUpperCase()}.svg`"
                             :alt="myTrending.original_language.toUpperCase()">

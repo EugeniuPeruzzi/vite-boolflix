@@ -10,5 +10,5 @@ export const store = reactive({
     filmsObj: [],
     tvsObj: [],
     searchFilm: '',
-    trendingsObj: []
+    trendingsObj: [],
 });

@@ -25,8 +25,16 @@ export default {
         <div class="card m-2">
             <div class="position-relative">
                 <div class="card-container bckg-black">
-                    <div class="img-container">
-                        <img :src="`https://image.tmdb.org/t/p/w342/${myCardTv.poster_path}`">
+                    <div class="" v-if="(myCardTv.poster_path == null)">
+                        <div class="img-container">
+                            <img
+                                src="https://lascrucesfilmfest.com/wp-content/uploads/2018/01/no-poster-available-737x1024.jpg">
+                        </div>
+                    </div>
+                    <div v-else>
+                        <div class="img-container">
+                            <img :src="`https://image.tmdb.org/t/p/w342/${myCardTv.poster_path}`">
+                        </div>
                     </div>
                     <div class="overlay d-flex flex-column align-items-center text-center">
                         <h4 class="mt-1">{{ myCardTv.name }}</h4>
