@@ -1,11 +1,17 @@
 <script>
 import { store } from '../store';
+import axios from 'axios';
+
+import AppActors from '../components/AppActors.vue'
 
 export default {
     data() {
         return {
             store,
         }
+    },
+    components: {
+        AppActors,
     },
     props: {
         myCardFilm: Object
@@ -31,19 +37,20 @@ export default {
 
             axios.get(store.fullCastUrl).then((res) => {
                 store.castObj = res.data.cast
-                console.log('adfufnbeufgnbufngu');
+                console.log(store.castObj);
             });
 
             //continua a darmi axios is undefined credo sia dovuto alla parte che non riesco a recuparare l'id, 
             // vedro di sistemarlo 
         },
     },
+
 }
 </script>
 
 <template >
     <div>
-        <div class="card m-2" @click="actorsApi()">
+        <div class="card m-2">
             <div class="position-relative">
                 <div class="card-container bckg-black">
                     <div class="" v-if="(myCardFilm.poster_path == null)">
@@ -70,7 +77,11 @@ export default {
                         <div class="overview-container overflow-auto mt-4">
                             <p>{{ myCardFilm.overview }}</p>
                         </div>
-                        <button @click="actorsApi()">More...</button>
+                        <span @click="actorsApi()" :class="store.castObj.length === 0 ? 'd-block' : 'd-none'"><a
+                                href="#">More..</a></span>
+                        <div v-for=" (actors, index) in store.castObj.slice(0, 5)" :key="index">
+                            <AppActors :myActors="actors" />
+                        </div>
                     </div>
                 </div>
             </div>
