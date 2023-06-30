@@ -19,6 +19,7 @@ export default {
     mounted() {
         this.starVotes()
         this.starNoVotes()
+        this.actorsApi()
     },
     methods: {
         starVotes() {
@@ -31,9 +32,9 @@ export default {
             return noStar
         },
         actorsApi() {
-            store.idMovie = this.myCardFilm.id
+            // store.idMovie = this.myCardFilm.id
 
-            store.fullCastUrl = `${store.firstPartCastUrl}${store.idMovie}${store.lastPartCastUrl}`
+            store.fullCastUrl = `${store.firstPartCastUrl}${this.myCardFilm.id}${store.lastPartCastUrl}`
 
             axios.get(store.fullCastUrl).then((res) => {
                 store.castObj = res.data.cast
@@ -77,14 +78,14 @@ export default {
                         <div class="overview-container overflow-auto mt-4">
                             <p>{{ myCardFilm.overview }}</p>
                         </div>
-                        <span @click="actorsApi()" :class="store.castObj.length === 0 ? 'd-block' : 'd-none'"><a
-                                href="#">More..</a></span>
-                        <div v-for=" (actors, index) in store.castObj.slice(0, 5)" :key="index">
-                            <AppActors :myActors="actors" />
-                        </div>
+
+
                     </div>
                 </div>
             </div>
+        </div>
+        <div v-for=" (actors, index) in store.castObj.slice(0, 5)" :key="index">
+            {{ actors.original_name }}
         </div>
     </div>
 </template>
