@@ -20,4 +20,5 @@ export const store = reactive({
     lastPartCastUrl: '/credits?api_key=4b67cbd6fbd947d07786332b3eb7ee5a',
     fullCastUrl: '',
     castObj: [],
+    more: false,
 });

@@ -19,7 +19,6 @@ export default {
   mounted() {
     axios.get(store.trendingUrl).then((res) => {
       store.trendingsObj = res.data.results;
-      console.log(store.trendingsObj);
     });
   },
 
@@ -31,15 +30,12 @@ export default {
         store.filmUrl += `&query=${store.searchFilm}`;
         axios.get(store.filmUrl).then((response) => {
           store.filmsObj = response.data.results;
-
-          console.log(store.filmsObj);
         });
 
         store.tvUrl += `&query=${store.searchFilm}`;
         axios.get(store.tvUrl).then((response) => {
           store.tvsObj = response.data.results;
 
-          console.log(store.tvsObj);
         });
         store.trendingsObj = 0
       }
@@ -49,7 +45,6 @@ export default {
         axios.get(store.trendingUrl).then((res) => {
           store.trendingsObj = res.data.results;
 
-          console.log(store.trendingsObj);
         });
       }
     },

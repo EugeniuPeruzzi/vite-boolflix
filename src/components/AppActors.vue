@@ -10,13 +10,9 @@ export default {
     },
     props: {
         myActors: Object
-    }
+    },
 }
 </script>
 
-<template >
-    <div>
-        <span>{{ myActors.original_name }}</span>
-    </div>
-</template>
+<template ></template>
 <style lang="scss" scoped></style>

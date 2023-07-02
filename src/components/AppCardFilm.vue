@@ -19,7 +19,6 @@ export default {
     mounted() {
         this.starVotes()
         this.starNoVotes()
-        this.actorsApi()
     },
     methods: {
         starVotes() {
@@ -32,7 +31,7 @@ export default {
             return noStar
         },
         actorsApi() {
-            // store.idMovie = this.myCardFilm.id
+            store.idMovie = this.myCardFilm.id
 
             store.fullCastUrl = `${store.firstPartCastUrl}${this.myCardFilm.id}${store.lastPartCastUrl}`
 
@@ -40,6 +39,7 @@ export default {
                 store.castObj = res.data.cast
                 console.log(store.castObj);
             });
+            store.more = true
 
             //continua a darmi axios is undefined credo sia dovuto alla parte che non riesco a recuparare l'id, 
             // vedro di sistemarlo 
@@ -79,14 +79,17 @@ export default {
                             <p>{{ myCardFilm.overview }}</p>
                         </div>
 
-
+                        <div @click="actorsApi()">
+                            <a href="#">More...</a>
+                            <div v-for=" (actors, index) in   store.castObj.slice(0, 5)  " :key="index"
+                                :this.class="store.more === true ? 'd-block' : 'd-none'">
+                                {{ actors.name }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div v-for=" (actors, index) in store.castObj.slice(0, 5)" :key="index">
-            {{ actors.original_name }}
-        </div>
     </div>
 </template>
-<style lang="scss" scoped></style>
+<style  lang =" scss" scoped></style>
