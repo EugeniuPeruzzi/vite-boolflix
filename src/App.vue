@@ -35,7 +35,7 @@ export default {
         store.tvUrl += `&query=${store.searchFilm}`;
         axios.get(store.tvUrl).then((response) => {
           store.tvsObj = response.data.results;
-
+          console.log(store.tvsObj);
         });
         store.trendingsObj = 0
       }

@@ -14,7 +14,7 @@ export const store = reactive({
 
 
     // Cast array and api
-
+    idTv: '',
     idMovie: '',
     firstPartCastUrl: 'https://api.themoviedb.org/3/movie/',
     lastPartCastUrl: '/credits?api_key=4b67cbd6fbd947d07786332b3eb7ee5a',

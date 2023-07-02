@@ -33,7 +33,7 @@ export default {
         actorsApi() {
             store.idMovie = this.myCardFilm.id
 
-            store.fullCastUrl = `${store.firstPartCastUrl}${this.myCardFilm.id}${store.lastPartCastUrl}`
+            store.fullCastUrl = `${store.firstPartCastUrl}${store.idMovie}${store.lastPartCastUrl}`
 
             axios.get(store.fullCastUrl).then((res) => {
                 store.castObj = res.data.cast
@@ -79,10 +79,10 @@ export default {
                             <p>{{ myCardFilm.overview }}</p>
                         </div>
 
-                        <div @click="actorsApi()">
-                            <a href="#">More...</a>
+                        <div @click="actorsApi()" class="p-3">
+                            <p class="m-0 more">More...</p>
                             <div v-for=" (actors, index) in   store.castObj.slice(0, 5)  " :key="index"
-                                :this.class="store.more === true ? 'd-block' : 'd-none'">
+                                :class="store.idMovie === myCardFilm.id ? 'd-block' : 'd-none'">
                                 {{ actors.name }}
                             </div>
                         </div>
@@ -92,4 +92,4 @@ export default {
         </div>
     </div>
 </template>
-<style  lang =" scss" scoped></style>
+<style  lang ="scss" scoped></style>
